@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: absafi <absafi@student.42amman.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/28 21:21:27 by absafi            #+#    #+#             */
-/*   Updated: 2026/10/03 22:38:36 by absafi           ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   get_next_line_utils.c                             :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: absafi <absafi@student.42amman.com>       #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/09/28 21:21:27 by absafi           #+#    #+#              */
+/*   Updated: 2026/10/05 01:49:40 by absafi          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,48 +52,68 @@ static char	*ft_free_and_join(char *s1, char const *s2, size_t dest_cpy)
 	if (!s1)
 	{
 		s1 = malloc(1);
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	while (s1[s1_size])
 		s1_size++;
 	result = malloc(s1_size + dest_cpy + 1);
+	if (!result)
+	{
+		free(s1);
+		return (NULL);
+	}
 	ft_strlcpy(result, s1, s1_size + 1);
 	ft_strlcpy(&result[s1_size], s2, dest_cpy + 1);
 	free(s1);
 	return (result);
 }
 
+static int	prepare_result(char **result, char **read_buf, int read_value)
+{
+	char	*ptr;
+
+	ptr = find_chr(*read_buf);
+	if (ptr)
+	{
+		*result = ft_free_and_join(*result, *read_buf, ptr - *read_buf + 1);
+		if (!*result)
+			return (1);
+		ft_strlcpy(*read_buf, ptr + 1, read_value - (ptr - *read_buf));
+		return (1);
+	}
+	*result = ft_free_and_join(*result, *read_buf, ft_strlen(*read_buf));
+	if (!*result)
+		return (1);
+	(*read_buf)[0] = '\0';
+	return (0);
+}
+
 static char	*read_line(int fd)
 {
-	static char	read_buffer[BUFFER_SIZE + 1];
+	static char	read_buf[BUFFER_SIZE + 1];
 	char		*result;
-	char		*ptr;
 	int			read_value;
 
 	read_value = 1;
-	result = ft_free_and_join(malloc(0), read_buffer, ft_strlen(read_buffer));
-	if (find_chr(read_buffer))
-	{
-		ptr = find_chr(read_buffer);
-		ft_strlcpy(read_buffer, ptr + 1, BUFFER_SIZE - (ptr - read_buffer));
+	result = malloc(1);
+	if (!result)
+		return (NULL);
+	result[0] = '\0';
+	if (prepare_result(&result, &read_buf, ft_strlen(read_buf)))
 		return (result);
-	}
 	while (read_value)
 	{
-		read_value = read(fd, read_buffer, BUFFER_SIZE);
+		read_value = read(fd, read_buf, BUFFER_SIZE);
 		if (read_value == -1)
-			return (NULL);
-		read_buffer[read_value] = '\0';
-		if (read_value > 0)
-			result = ft_free_and_join(result, read_buffer, read_value);
-		if (find_chr(read_buffer))
 		{
-			ptr = find_chr(read_buffer);
-			ft_strlcpy(read_buffer, ptr + 1, BUFFER_SIZE - (ptr - read_buffer));
-			break ;
+			free(result);
+			return (NULL);
 		}
-		else
-			read_buffer[0] = '\0';
+		read_buf[read_value] = '\0';
+		if (read_value > 0 && prepare_result(&result, &read_buf, read_value))
+			return (result);
 	}
 	return (result);
 }
