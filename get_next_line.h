@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   get_next_line.h                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: absafi <absafi@student.42amman.com>       #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/28 21:16:30 by absafi           #+#    #+#              */
-/*   Updated: 2026/10/08 02:06:27 by absafi          ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: absafi <absafi@student.42amman.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 21:16:30 by absafi            #+#    #+#             */
+/*   Updated: 2026/10/10 23:31:51 by absafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 42
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <stddef.h>
 # include <unistd.h>

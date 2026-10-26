@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   get_next_line.c                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: absafi <absafi@student.42amman.com>       #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/28 21:17:49 by absafi           #+#    #+#              */
-/*   Updated: 2026/10/08 02:21:16 by absafi          ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: absafi <absafi@student.42amman.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 21:17:49 by absafi            #+#    #+#             */
+/*   Updated: 2026/10/26 13:20:19 by absafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static int	init(int fd, char **result, char **buffer)
 	return (1);
 }
 
-ssize_t	error(char **temp)
+static ssize_t	error(char **temp)
 {
 	free(*temp);
 	return (-1);
 }
 
-ssize_t	read_line(int fd, char **buffer)
+static ssize_t	read_line(int fd, char **buffer)
 {
 	char	*temp;
 	char	*temp_buffer;
