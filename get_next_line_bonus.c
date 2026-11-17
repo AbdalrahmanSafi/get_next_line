@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: absafi <absafi@student.42amman.com>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/28 21:17:49 by absafi            #+#    #+#             */
-/*   Updated: 2026/10/25 09:22:44 by absafi           ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   get_next_line_bonus.c                             :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: absafi <absafi@student.42amman.com>       #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/09/28 21:17:49 by absafi           #+#    #+#              */
+/*   Updated: 2026/10/26 14:47:19 by absafi          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	init(int fd, char **result, char **buffer)
 {

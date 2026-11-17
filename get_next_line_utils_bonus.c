@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   get_next_line_utils.c                             :+:      :+:    :+:    */
+/*   get_next_line_utils_bonus.c                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: absafi <absafi@student.42amman.com>       #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/28 21:21:27 by absafi           #+#    #+#              */
-/*   Updated: 2026/10/08 01:54:16 by absafi          ###   ########.fr        */
+/*   Updated: 2026/10/26 14:47:55 by absafi          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_memmove(char *dest, char *src, size_t num)
 {

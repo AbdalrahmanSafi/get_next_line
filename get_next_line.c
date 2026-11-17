@@ -6,7 +6,7 @@
 /*   By: absafi <absafi@student.42amman.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:49 by absafi            #+#    #+#             */
-/*   Updated: 2026/10/26 13:20:19 by absafi           ###   ########.fr       */
+/*   Updated: 2026/11/17 11:18:10 by absafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static ssize_t	read_line(int fd, char **buffer)
 	ssize_t	bytes_read;
 
 	bytes_read = 1;
-	temp = malloc((BUFFER_SIZE + 1));
 	temp_buffer = NULL;
+	temp = malloc((BUFFER_SIZE + 1));
 	if (!temp)
 		return (-1);
 	while (!ft_strchr(*buffer, '\n') && bytes_read != 0)
